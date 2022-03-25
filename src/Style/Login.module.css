@@ -9,3 +9,7 @@ div.container {
     text-align: center;
     border-radius: 5px;
 }
+
+input.color{
+    border-bottom: 2px solid red;
+}
