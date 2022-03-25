@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -10,19 +10,18 @@ const Login = (props) => {
     const [btn, setBtn] = useState(true)
 
     const handleState = (e) => { 
-            checkBtn()     
         if (e.target.id == 'mui-1')
             setLogin(e.target.value)
         if (e.target.id == 'mui-2')
-            setPassword(e.target.value)      
+            setPassword(e.target.value)       
     }
-    const checkBtn = (e)=>{
+    useEffect (() => {
         
         if(login && password)
         setBtn(false)
         if(!login || !password)
         setBtn(true)
-    }
+    },[login, password])
     const checkState = (e) => {
         if (!login || !password)
             e.target.classList.add(s.color)
