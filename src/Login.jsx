@@ -3,17 +3,22 @@ import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import s from './Style/Login.module.css'
+import axios from 'axios';
 
 const Login = (props) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [btn, setBtn] = useState(true)
 
-    const handleState = (e) => { 
+    const handleState = (e) => {
         if (e.target.id == 'mui-1')
             setLogin(e.target.value)
         if (e.target.id == 'mui-2')
-            setPassword(e.target.value)       
+            setPassword(e.target.value)
+        if (!e.target.value)
+            e.target.classList.add(s.color)
+            if (e.target.value && e.target.classList.contains(s.color) == true)
+            e.target.classList.remove(s.color)
     }
     useEffect (() => {
         
@@ -23,15 +28,14 @@ const Login = (props) => {
         setBtn(true)
     },[login, password])
     const checkState = (e) => {
-        if (!login || !password)
+        if (!e.target.value)
             e.target.classList.add(s.color)
-        if (login || password)
-            e.target.classList.remove(s.color)
 
     }
-    const handleSubmit = (e) => {
+    async function handleSubmit (e)  {
         e.preventDefault();
-        console.log('submit>', login)
+        const rest = await axios.get('./Api').then((repos) => {
+            console.log(repos) })
     }
     return (
         <div className={s.container} >
