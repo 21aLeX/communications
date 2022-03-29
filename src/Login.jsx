@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import s from './Style/Login.module.css'
 import axios from 'axios';
+import Get from './Api/Get';
 
 const Login = (props) => {
     const [login, setLogin] = useState('')
@@ -27,6 +28,7 @@ const Login = (props) => {
         if(!login || !password)
         setBtn(true)
     },[login, password])
+
     const checkState = (e) => {
         if (!e.target.value)
             e.target.classList.add(s.color)
@@ -34,8 +36,11 @@ const Login = (props) => {
     }
     async function handleSubmit (e)  {
         e.preventDefault();
-        const rest = await axios.get('./Api').then((repos) => {
-            console.log(repos) })
+        const rest = await Get.getAll(login, password)
+       console.log(rest)
+       if(rest == 200){
+        this.history.router.push(`https://docs.microsoft.com/ru-ru/learn/modules/introduction-to-github-visual-studio-code/4-lesson-publish`)
+       }
     }
     return (
         <div className={s.container} >
@@ -59,7 +64,7 @@ const Login = (props) => {
                     autoComplete="current-password"
                     variant="standard"
                 /></div>
-                <Button disabled={btn} type='submit' variant="outlined" color="secondary"
+                <Button router={history} disabled={btn} type='submit' variant="outlined" color="secondary"
                     style={{
                         top: 5
                     }}
