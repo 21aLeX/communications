@@ -1,1 +1,0 @@
-export const LOGIN_CREATE='LOGIN_CREATE'

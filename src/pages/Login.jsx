@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import s from './Style/Login.module.css'
+import s from '../style/Login.module.css'
 import axios from 'axios';
-import Get from './Api/Get';
+import Get from '../Api/Get';
+import {setUser} from '../store/slice/userSlice.js'
 
 const Login = (props) => {
     const [login, setLogin] = useState('')
@@ -38,9 +39,7 @@ const Login = (props) => {
         e.preventDefault();
         const rest = await Get.getAll(login, password)
        console.log(rest)
-       if(rest == 200){
-        this.history.router.push(`https://docs.microsoft.com/ru-ru/learn/modules/introduction-to-github-visual-studio-code/4-lesson-publish`)
-       }
+       
     }
     return (
         <div className={s.container} >
@@ -64,7 +63,7 @@ const Login = (props) => {
                     autoComplete="current-password"
                     variant="standard"
                 /></div>
-                <Button router={history} disabled={btn} type='submit' variant="outlined" color="secondary"
+                <Button disabled={btn} type='submit' variant="outlined" color="secondary"
                     style={{
                         top: 5
                     }}
@@ -74,10 +73,5 @@ const Login = (props) => {
 
 
 };
-function mapStateToProps(state) {
-    console.log('mapStateToProps>', state)
-    return {
-        login: state.login
-    }
-}
-export default connect(mapStateToProps)(Login)
+
+export default Login
