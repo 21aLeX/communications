@@ -4,7 +4,7 @@ import {useAuth} from '../hooks/use-auth'
 
 
 const Home =()=> {
-    const {isAuth, login} = useAuth()
+    const {isAuth, sing} = useAuth()
 console.log(isAuth)
 
     return isAuth ? 

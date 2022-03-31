@@ -45,8 +45,7 @@ const Login = (props) => {
        console.log(rest)
        if(rest == 200){
            dispatch(setUser({
-               login: login,
-               password: password,
+               sing: true,
            }))
            navigate('*')
        }
