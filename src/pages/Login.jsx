@@ -5,12 +5,15 @@ import TextField from '@mui/material/TextField';
 import s from '../style/Login.module.css'
 import axios from 'axios';
 import Get from '../Api/Get';
+import {useDispatch} from 'react-redux'
 import {setUser} from '../store/slice/userSlice.js'
+import {useNavigate} from 'react-router-dom'
 
 const Login = (props) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [btn, setBtn] = useState(true)
+    let navigate = useNavigate()
 
     const handleState = (e) => {
         if (e.target.id == 'mui-1')
@@ -35,10 +38,18 @@ const Login = (props) => {
             e.target.classList.add(s.color)
 
     }
+    const dispatch = useDispatch()
     async function handleSubmit (e)  {
         e.preventDefault();
         const rest = await Get.getAll(login, password)
        console.log(rest)
+       if(rest == 200){
+           dispatch(setUser({
+               login: login,
+               password: password,
+           }))
+           navigate('*')
+       }
        
     }
     return (

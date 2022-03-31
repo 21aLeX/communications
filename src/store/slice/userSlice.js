@@ -9,8 +9,11 @@ const userSlice=createSlice({
     initialState,
     reducers:{
         setUser(state, action){
-            state.login = action.payload.login
-            state.password = action.payload.password
+            state.login = action.payload.login;
+            state.password = action.payload.password;
         }
     }
 })
+export const{setUser, removeUser} = userSlice.actions;
+
+export default userSlice.reducer;

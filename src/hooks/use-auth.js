@@ -5,6 +5,7 @@ export function useAuth(){
 
     return{
         isAuth: !!login,
+        login,
         password,
     }
 }
