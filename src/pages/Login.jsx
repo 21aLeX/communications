@@ -44,8 +44,9 @@ const Login = (props) => {
         const rest = await Get.getAll(login, password)
        console.log(rest)
        if(rest == 200){
+        sessionStorage.setItem('sing', true)
            dispatch(setUser({
-               sing: true,
+               sing: sessionStorage.getItem('sing'),
            }))
            navigate('*')
        }
