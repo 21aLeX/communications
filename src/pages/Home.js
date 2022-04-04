@@ -1,21 +1,30 @@
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Login from './Login'
-import {useAuth} from '../hooks/use-auth'
+import { useAuth } from '../hooks/use-auth'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { removeUser } from '../store/slice/userSlice.js'
 
 
-const Home =()=> {
-    const {isAuth, sing} = useAuth()
-console.log(isAuth)
+const Home = () => {
+    let { isAuth, sing } = useAuth()
 
-    return isAuth ? 
-    <div>Welcome</div>
-    :
-    (
-        <Routes>
-      
-  <Route path='*' element={<Login to='login' replace />} />
-        </Routes>
-    )
+    const dispatch = useDispatch()
+    return isAuth ?
+        <div>Welcome
+            <button
+                onClick={() => {
+                    dispatch(removeUser())
+                }}
+            >выход</button>
+        </div>
+        :
+        (
+            <Routes>
+
+                <Route path='*' element={<Login to='login' replace />} />
+            </Routes>
+        )
 }
 
 export default Home

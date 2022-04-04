@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {useSelector} from 'react-redux'
 
 export function useAuth(){
@@ -5,5 +6,4 @@ export function useAuth(){
 
     return{
         isAuth: !!sing,
-    }
-}
+    }}

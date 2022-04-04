@@ -1,14 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState={
-    sing: false,
+    sing: sessionStorage.getItem('sing'),
 }
+
 const userSlice=createSlice({
     name:'user',
     initialState,
     reducers:{
         setUser(state, action){
             state.sing = action.payload.sing;
+        },
+        removeUser(state){
+            state.sing = sessionStorage.clear();
         }
     }
 })

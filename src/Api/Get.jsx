@@ -8,17 +8,17 @@ export default class Get {
 
         let mock = new MockAdapter(axios);
 
-         mock.onGet("https://jsonplaceholder.typicode.com/users", { params: { login: "adm", password: 1234 } }).reply(200, {
+        mock.onGet("https://jsonplaceholder.typicode.com/users", { params: { login: "adm", password: 1234 } }).reply(200, {
             users: [{ id: 1, login: "adm", password: 1234 }],
         });
 
-      const response= axios
+        const response = axios
             .get("https://jsonplaceholder.typicode.com/users", { params: { login: "adm", password: 1234 } })
             .then(function (response) {
-                
-        return response.status
+
+                return response.status
             });
-            return response
+        return response
 
     }
 }
