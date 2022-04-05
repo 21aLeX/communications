@@ -14,6 +14,7 @@ import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 
 const Tables = () => {
@@ -41,13 +42,18 @@ const Tables = () => {
             </TableCell>
             <TableCell>
             <AddIcon sx={{ color: 'green', mr: 1, my: 0.5 }} />
-            </TableCell>
+            </TableCell><TableCell></TableCell>
           </TableRow>
           
-          <TableRow><TableCell>
+          <TableRow><TableCell 
+  >
         <KeyboardArrowDownIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> Name</TableCell>
         <TableCell>
-        <KeyboardArrowDownIcon sx={{ transform: 'rotate(180deg)', color: 'action.active', mr: 1, my: 0.5 }} /></TableCell></TableRow>
+        <KeyboardArrowUpIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} /></TableCell>
+        
+        <TableCell></TableCell>
+        
+        <TableCell></TableCell></TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
