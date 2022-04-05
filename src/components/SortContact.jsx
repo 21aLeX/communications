@@ -15,10 +15,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import CreateContact from './CreateContact';
 import ListContact from './ListContact';
-import SortContact from './SortContact';
 
 
-const Tables = () => {
+const SortContact = () => {
 
   const rows = [
     { name: 'a', c: 5 },
@@ -29,17 +28,17 @@ const Tables = () => {
 
   ];
   return (
-    <TableContainer sx={{}}  >
-      <Table sx={{ maxWidth: 850, marginRight: 'auto', marginLeft: 'auto' }} aria-label="simple table">
-        <TableHead>
-         <CreateContact/>
 
-          <SortContact />
-        </TableHead>
-        <ListContact />
-      </Table>
-    </TableContainer>
+    <TableRow><TableCell
+    >
+      <KeyboardArrowDownIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> Name</TableCell>
+      <TableCell>
+        <KeyboardArrowUpIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} /></TableCell>
+
+      <TableCell></TableCell>
+
+      <TableCell></TableCell></TableRow>
   );
 };
 
-export default Tables;
+export default SortContact;
