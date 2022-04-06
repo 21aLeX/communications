@@ -4,29 +4,26 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import EditIcon from '@mui/icons-material/Edit';
+import { useSelector } from 'react-redux';
 
 
 const ListContact= () => {
+  const listContact = useSelector(state=> state.contact.contact);
+  console.log(listContact.length)
+  const number =listContact.length
 
-  const rows = [
-    { name: 'a', c: 5 },
-    { name: 'b', c: 6 },
-    { name: 'c', c: 7 },
-    { name: 'd', c: 8 },
-    { name: 'f', c: 9 }
-
-  ];
   return (
         <TableBody>
-          {rows.map((row) => (
+          {listContact.map((listContact, index) => (
             <TableRow
-              key={row}
+              key={index+1}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+              <TableCell >{index+1}</TableCell>
               <TableCell component="th" scope="row">
-                {row.name}
+                {listContact.name}
               </TableCell>
-              <TableCell>{row.c}</TableCell>
+              <TableCell>{listContact.telephone}</TableCell>
               <TableCell>
                 <EditIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
               </TableCell>

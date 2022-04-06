@@ -29,7 +29,9 @@ const SortContact = () => {
   ];
   return (
 
-    <TableRow><TableCell
+    <TableRow>
+      <TableCell></TableCell>
+      <TableCell
     >
       <KeyboardArrowDownIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} /> Name</TableCell>
       <TableCell>

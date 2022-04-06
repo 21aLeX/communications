@@ -1,42 +1,52 @@
-import React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import TtyIcon from '@mui/icons-material/Tty';
 import AddIcon from '@mui/icons-material/Add';
+import { setContact } from '../store/slice/contactSlice '
+import { Button, IconButton } from '@mui/material';
 
 
-const CreateContact = () => {
+const CreateContact = (setUser) => {
+  const [name, setName] = useState('')
+  const [telephone, setTelephone] = useState('')
+  const dispatch = useDispatch(setUser);
 
-  const rows = [
-    { name: 'a', c: 5 },
-    { name: 'b', c: 6 },
-    { name: 'c', c: 7 },
-    { name: 'd', c: 8 },
-    { name: 'f', c: 9 }
-
-  ];
+  const addContact =(e)=>{    
+    e.preventDefault();
+    dispatch(setContact({name, telephone}))
+    setName('')
+    setTelephone('')
+  }
   return (
-          <TableRow>
-            <TableCell>
-              <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-              <TextField id="input-with-sx" label="Name contact" variant="standard" />
-            </TableCell>
-            <TableCell align="right">
-              <TtyIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-              <TextField id="input-with-sx" label="Telephone" variant="standard" />
-            </TableCell>
-            <TableCell>
-              <AddIcon sx={{ color: 'green', mr: 1, my: 0.5 }} />
-            </TableCell><TableCell></TableCell>
-          </TableRow>
+    <TableRow>
+      <TableCell></TableCell>
+      <TableCell>
+        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <TextField
+          value={name}
+          onChange={e => setName(e.target.value)}
+          id="input-with-sx" label="Name contact" variant="standard" />
+      </TableCell>
+      <TableCell align="right">
+        <TtyIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <TextField
+          value={telephone}
+          onChange={e => setTelephone(e.target.value)}
+          id="input-with-sx" label="Telephone" variant="standard" />
+      </TableCell>
+      <TableCell>
+      <form onSubmit={addContact}>
+      <IconButton type='submite' size="large">
+        <AddIcon sx={{ color: 'green' }} />
+          </IconButton></form>
+      </TableCell><TableCell></TableCell>
+    </TableRow>
 
-          
+
   );
 };
 
