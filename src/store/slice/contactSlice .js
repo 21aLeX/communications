@@ -15,16 +15,19 @@ const contactSlice = createSlice({
             state.contact.push({
                 name: action.payload.name,
                 telephone: action.payload.telephone,
-                id: Date.now(),
-            },
-            // deletContact(action){
+                id: Date.now()
+            })
+        },
 
-            // }
-            );
+        deleteContact(state, action) {
+            console.log(action.payload)
+            state.contact = state.contact.filter(c=>c.id !==action.payload)
         }
+
+
     }
 })
 
-export const  {setContact} = contactSlice.actions;
+export const { setContact,deleteContact } = contactSlice.actions;
 
-export default  contactSlice.reducer;
+export default contactSlice.reducer;

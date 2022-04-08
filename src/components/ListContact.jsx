@@ -5,13 +5,15 @@ import TableRow from '@mui/material/TableRow';
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux';
+import {useDispatch} from 'react-redux'
+import {deleteContact} from '../store/slice/contactSlice '
+import { IconButton } from '@mui/material';
 
 
 const ListContact= () => {
   const listContact = useSelector(state=> state.contact.contact);
-  console.log(listContact.length)
-  const number =listContact.length
-
+  const dispatch=useDispatch()
+  
   return (
         <TableBody>
           {listContact.map((listContact, index) => (
@@ -28,7 +30,9 @@ const ListContact= () => {
                 <EditIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
               </TableCell>
               <TableCell>
-                <ClearSharpIcon sx={{ color: 'red', mr: 1, my: 0.5 }} />
+              <IconButton onClick={()=>dispatch(deleteContact(listContact.id))} size="large">
+                <ClearSharpIcon sx={{ color: 'red' }} />
+              </IconButton>
               </TableCell>
             </TableRow>
           ))}
