@@ -20,14 +20,17 @@ const contactSlice = createSlice({
         },
 
         deleteContact(state, action) {
-            console.log(action.payload)
             state.contact = state.contact.filter(c=>c.id !==action.payload)
+        },
+        changeContact(state,action){
+            state.contact[action.payload.id].name = action.payload.name
+            state.contact[action.payload.id].telephone = action.payload.telephone
         }
 
 
     }
 })
 
-export const { setContact,deleteContact } = contactSlice.actions;
+export const { setContact,deleteContact, changeContact } = contactSlice.actions;
 
 export default contactSlice.reducer;

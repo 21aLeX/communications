@@ -5,7 +5,6 @@ import TableHead from '@mui/material/TableHead';
 import CreateContact from './CreateContact';
 import ListContact from './ListContact';
 import SortContact from './SortContact';
-import { setUser } from '../store/slice/userSlice.js'
 
 
 const Tables = () => {
@@ -14,7 +13,7 @@ const Tables = () => {
     <TableContainer sx={{}}  >
       <Table sx={{ maxWidth: 850, marginRight: 'auto', marginLeft: 'auto' }} aria-label="simple table">
         <TableHead>
-         <CreateContact setUser={setUser}/>
+         <CreateContact/>
 
           <SortContact />
         </TableHead>

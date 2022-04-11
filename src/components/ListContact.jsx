@@ -7,7 +7,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux'
 import {deleteContact} from '../store/slice/contactSlice '
-import { IconButton } from '@mui/material';
+import { IconButton, Modal } from '@mui/material';
+import { setVisible } from '../store/slice/visibleModalSlise';
 
 
 const ListContact= () => {
@@ -27,7 +28,8 @@ const ListContact= () => {
               </TableCell>
               <TableCell>{listContact.telephone}</TableCell>
               <TableCell>
-                <EditIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <EditIcon 
+                onClick={()=>dispatch(setVisible({visible:true, id:listContact.id}))} sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
               </TableCell>
               <TableCell>
               <IconButton onClick={()=>dispatch(deleteContact(listContact.id))} size="large">

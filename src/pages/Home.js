@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/use-auth'
 import { useDispatch } from 'react-redux'
 import { removeUser } from '../store/slice/userSlice.js'
 import Tables from '../components/Tables';
+import Modall from '../components/Modall';
 
 
 const Home = () => {
@@ -14,6 +15,8 @@ const Home = () => {
     const dispatch = useDispatch()
     return isAuth ?
         <div> 
+            
+          <Modall></Modall>
             <AppBar position="static">
       <Container maxWidth="xl">
             <button
