@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import cl from '../style/Modal.module.css'
 import CheckIcon from '@mui/icons-material/Check';
 import { AccountCircle } from '@mui/icons-material';
@@ -10,15 +10,21 @@ import { useSelector } from 'react-redux';
 
 const Modall = () => {
     const visible = useSelector(state => state.visibles);
-    console.log(visible)
+    
+console.log(visible.visible)
     const [name, setName] = useState('')
     const [telephone, setTelephone] = useState('')
     const dispatch = useDispatch();
-
     const rootClasses = [cl.myModal]
-if(visible.visible){
-rootClasses.push(cl.active)
-}
+    const contact = useSelector(state => state.contact.contact.filter(c=>c.id ==visible.id).pop());
+    
+        if(rootClasses.length == 1 && visible.visible){
+            rootClasses.push(cl.active)
+    setName(contact.name)
+    setTelephone(contact.telephone)
+            }
+    
+
 
     const change = (e) => {
         e.preventDefault();

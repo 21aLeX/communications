@@ -14,10 +14,8 @@ const visibleModalSlice = createSlice({
     initialState,
     reducers: {
         setVisible(state, action) {
-            console.log( state)
             state.visible = action.payload.visible
             state.id = action.payload.id
-            console.log( state)
         },
 
         // deleteContact(state, action) {

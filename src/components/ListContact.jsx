@@ -28,8 +28,11 @@ const ListContact= () => {
               </TableCell>
               <TableCell>{listContact.telephone}</TableCell>
               <TableCell>
-                <EditIcon 
-                onClick={()=>dispatch(setVisible({visible:true, id:listContact.id}))} sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              <IconButton 
+              onClick={()=>dispatch(setVisible({visible:true, id:listContact.id}))} 
+              sx={{ color: 'action.active'}}>
+                <EditIcon/>
+              </IconButton>
               </TableCell>
               <TableCell>
               <IconButton onClick={()=>dispatch(deleteContact(listContact.id))} size="large">
