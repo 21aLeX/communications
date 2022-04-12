@@ -13,7 +13,7 @@ const userSlice = createSlice({
             state.sing = action.payload.sing;
         },
         removeUser(state) {
-            state.sing = sessionStorage.clear();
+            state.sing = sessionStorage.removeItem('sing');
         }
     }
 })

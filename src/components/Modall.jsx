@@ -16,6 +16,7 @@ const Modall = () => {
     const [telephone, setTelephone] = useState('')
     const dispatch = useDispatch();
     const rootClasses = [cl.myModal]
+    console.log(useSelector(state => state.contact.contact))
     const contact = useSelector(state => state.contact.contact.filter(c => c.id == visible.id).pop());
 
     const n = useMemo(() => {

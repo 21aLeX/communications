@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 const initialState = {
-    contact: [],
+    contact: JSON.parse (sessionStorage.getItem ("listContact")),
 }
 
 
@@ -17,6 +17,8 @@ const contactSlice = createSlice({
                 telephone: action.payload.telephone,
                 id: Date.now()
             })
+            sessionStorage.setItem("listContact", JSON.stringify(state.contact))
+            console.log(JSON.parse (sessionStorage.getItem ("listContact")))
         },
 
         deleteContact(state, action) {

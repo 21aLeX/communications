@@ -17,12 +17,16 @@ const CreateContact = (setUser) => {
 
   const addContact = (e) => {
     e.preventDefault();
+    
+    sessionStorage.setItem("listContact", JSON.stringify("object"))
     dispatch(setContact({ name, telephone }))
     setName('')
     setTelephone('')
   }
   return (
     <TableRow>
+      <TableCell>
+      </TableCell>
       <TableCell>
         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField
@@ -42,6 +46,8 @@ const CreateContact = (setUser) => {
           <IconButton type='submite' size="large">
             <AddIcon sx={{ color: 'green' }} />
           </IconButton></form>
+      </TableCell>
+      <TableCell>
       </TableCell>
     </TableRow>
 

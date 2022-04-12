@@ -24,11 +24,12 @@ const ListContact = () => {
     <TableBody>
       {searchContact.map((listContact, index) => (
         <TableRow
+        align="right"
           key={index + 1}
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
-          <TableCell >{index + 1}</TableCell>
-          <TableCell component="th" scope="row">
+          <TableCell style={{ width:5 }}>{index + 1}</TableCell>
+          <TableCell>
             {listContact.name}
           </TableCell>
           <TableCell>{listContact.telephone}</TableCell>
