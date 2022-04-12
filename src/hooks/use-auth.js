@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 
-export function useAuth(){
-    const {sing}= useSelector(state=>state.user)
+export function useAuth() {
+    const { sing } = useSelector(state => state.user)
 
-    return{
+    return {
         isAuth: !!sing,
-    }}
+    }
+}

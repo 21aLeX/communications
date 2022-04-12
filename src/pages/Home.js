@@ -11,22 +11,22 @@ import Modall from '../components/Modall';
 
 const Home = () => {
     let { isAuth, sing } = useAuth()
-    
+
     const dispatch = useDispatch()
     return isAuth ?
-        <div> 
-            
-          <Modall></Modall>
+        <div>
+
+            <Modall></Modall>
             <AppBar position="static">
-      <Container maxWidth="xl">
-            <button
-                onClick={() => {
-                    dispatch(removeUser())
-                }}
-            >выход</button>
+                <Container maxWidth="xl">
+                    <button
+                        onClick={() => {
+                            dispatch(removeUser())
+                        }}
+                    >Exit</button>
                 </Container></AppBar>
-                
-    <Tables/>
+
+            <Tables />
         </div>
         :
         (

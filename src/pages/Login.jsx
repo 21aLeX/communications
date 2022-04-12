@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import s from '../style/Login.module.css'
-import axios from 'axios';
+import s from '../style/Login.module.css';
 import Get from '../Api/Get';
-import { useDispatch } from 'react-redux'
-import { setUser } from '../store/slice/userSlice.js'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../store/slice/userSlice.js';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
     const [login, setLogin] = useState('')
@@ -23,7 +21,6 @@ const Login = (props) => {
     }, [login, password])
 
     const handleState = (e) => {
-        console.log('e:'+e.target.id)
         if (e.target.id == 'login')
             setLogin(e.target.value)
         if (e.target.id == 'password')
@@ -42,7 +39,6 @@ const Login = (props) => {
     async function handleSubmit(e) {
         e.preventDefault();
         const rest = await Get.getAll(login, password)
-        console.log(rest)
         if (rest == 200) {
             sessionStorage.setItem('sing', true)
             dispatch(setUser({
@@ -57,7 +53,7 @@ const Login = (props) => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <TextField
-                    id ='login'
+                        id='login'
                         value={login}
                         onBlur={checkState}
                         onChange={handleState}
@@ -66,7 +62,7 @@ const Login = (props) => {
                         variant="standard"
                     /></div>
                 <div> <TextField
-                id='password'
+                    id='password'
                     value={password}
                     onBlur={checkState}
                     onChange={handleState}

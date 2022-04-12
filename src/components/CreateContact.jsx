@@ -6,8 +6,8 @@ import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import TtyIcon from '@mui/icons-material/Tty';
 import AddIcon from '@mui/icons-material/Add';
-import { setContact } from '../store/slice/contactSlice '
-import { Button, IconButton } from '@mui/material';
+import { setContact } from '../store/slice/contactSlice ';
+import { IconButton } from '@mui/material';
 
 
 const CreateContact = (setUser) => {
@@ -15,15 +15,14 @@ const CreateContact = (setUser) => {
   const [telephone, setTelephone] = useState('')
   const dispatch = useDispatch(setUser);
 
-  const addContact =(e)=>{    
+  const addContact = (e) => {
     e.preventDefault();
-    dispatch(setContact({name, telephone}))
+    dispatch(setContact({ name, telephone }))
     setName('')
     setTelephone('')
   }
   return (
     <TableRow>
-      <TableCell></TableCell>
       <TableCell>
         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField
@@ -39,11 +38,11 @@ const CreateContact = (setUser) => {
           id="input-with-sx" label="Telephone" variant="standard" />
       </TableCell>
       <TableCell>
-      <form onSubmit={addContact}>
-      <IconButton type='submite' size="large">
-        <AddIcon sx={{ color: 'green' }} />
+        <form onSubmit={addContact}>
+          <IconButton type='submite' size="large">
+            <AddIcon sx={{ color: 'green' }} />
           </IconButton></form>
-      </TableCell><TableCell></TableCell>
+      </TableCell>
     </TableRow>
 
 

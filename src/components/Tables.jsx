@@ -4,18 +4,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import CreateContact from './CreateContact';
 import ListContact from './ListContact';
-import SortContact from './SortContact';
+import SearchContact from './SearchContact';
 
 
 const Tables = () => {
 
   return (
-    <TableContainer sx={{}}  >
-      <Table sx={{ maxWidth: 850, marginRight: 'auto', marginLeft: 'auto' }} aria-label="simple table">
+    <TableContainer>
+      <Table sx={{ maxWidth: 850, minWidth: 850, marginRight: 'auto', marginLeft: 'auto' }} aria-label="simple table">
         <TableHead>
-         <CreateContact/>
-
-          <SortContact />
+          <CreateContact />
+          <SearchContact />
         </TableHead>
         <ListContact />
       </Table>
