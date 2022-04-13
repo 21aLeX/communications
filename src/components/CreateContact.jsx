@@ -8,15 +8,19 @@ import TtyIcon from '@mui/icons-material/Tty';
 import AddIcon from '@mui/icons-material/Add';
 import { setContact } from '../store/slice/contactSlice ';
 import { IconButton } from '@mui/material';
+import s from '../style/Login.module.css';
 
 
 const CreateContact = (setUser) => {
   const [name, setName] = useState('')
   const [telephone, setTelephone] = useState('')
+  const [btn, setBtn] = useState(true)
   const dispatch = useDispatch(setUser);
 
   const addContact = (e) => {
     e.preventDefault();
+    if (!e.target.value)
+    e.target.classList.add(s.color)
     
     sessionStorage.setItem("listContact", JSON.stringify("object"))
     dispatch(setContact({ name, telephone }))
@@ -43,7 +47,7 @@ const CreateContact = (setUser) => {
       </TableCell>
       <TableCell>
         <form onSubmit={addContact}>
-          <IconButton type='submite' size="large">
+          <IconButton disabled={btn} type='submite' size="large">
             <AddIcon sx={{ color: 'green' }} />
           </IconButton></form>
       </TableCell>

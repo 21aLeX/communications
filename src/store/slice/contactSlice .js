@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
-
 const initialState = {
-    contact: JSON.parse (sessionStorage.getItem ("listContact")),
+    contact: [],
+}
+if(sessionStorage.getItem ("listContact")){
+    initialState.contact =JSON.parse (sessionStorage.getItem ("listContact"))
 }
 
 
+console.log(sessionStorage.getItem ("listContact"))
 const contactSlice = createSlice({
     name: 'contact',
     initialState,
@@ -23,6 +25,7 @@ const contactSlice = createSlice({
 
         deleteContact(state, action) {
             state.contact = state.contact.filter(c => c.id !== action.payload)
+            sessionStorage.setItem("listContact", JSON.stringify(state.contact))
         },
         changeContact(state, action) {
             for (let st of state.contact) {
@@ -30,7 +33,8 @@ const contactSlice = createSlice({
                     st.name = action.payload.name
                     st.telephone = action.payload.telephone
                 }
-            }
+            }            
+            sessionStorage.setItem("listContact", JSON.stringify(state.contact))
         }
 
 

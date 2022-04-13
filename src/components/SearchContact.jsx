@@ -30,7 +30,7 @@ const SortContact = () => {
   return (
 
     <TableRow>
-      <TableCell colSpan={3}>
+      <TableCell colSpan={5}>
         <TextField
           value={search}
           onChange={e => searchChenge(e.target.value)}
