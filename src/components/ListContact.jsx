@@ -13,7 +13,7 @@ import { setVisible } from '../store/slice/visibleModalSlise';
 
 const ListContact = () => {
   const listContact = useSelector(state => state.contact.contact);
-  const search = useSelector(state => state.search.search);
+  const search = useSelector(state => state.search.search).toLowerCase();
   const dispatch = useDispatch()
 
   const searchContact = useMemo(() => {
