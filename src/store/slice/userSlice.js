@@ -3,8 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     sing: sessionStorage.getItem('sing'),
 }
-
-
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -14,7 +12,7 @@ const userSlice = createSlice({
         },
         removeUser(state) {
             state.sing = sessionStorage.removeItem('sing');
-        }
+        },
     }
 })
 

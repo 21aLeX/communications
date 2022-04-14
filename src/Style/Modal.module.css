@@ -9,9 +9,7 @@
 }
 .myModalContent{
     display: flex;
-
     flex-direction: row;
-
     justify-content: flex-start;
     padding: 25px;
     background: white;

@@ -24,25 +24,33 @@ const ListContact = () => {
     <TableBody>
       {searchContact.map((listContact, index) => (
         <TableRow
-        align="right"
+          align="right"
           key={index + 1}
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
-          <TableCell style={{ width:5 }}>{index + 1}</TableCell>
+          <TableCell style={{ width: 5 }}>{index + 1}
+          </TableCell>
           <TableCell>
             {listContact.name}
           </TableCell>
-          <TableCell>{listContact.telephone}</TableCell>
+          <TableCell>{listContact.telephone}
+          </TableCell>
           <TableCell>
             <IconButton
               onClick={() => dispatch(setVisible({ visible: true, id: listContact.id }))}
-              sx={{ color: 'action.active' }}>
+              sx={{ color: 'action.active' }}
+            >
               <EditIcon />
             </IconButton>
           </TableCell>
           <TableCell>
-            <IconButton onClick={() => dispatch(deleteContact(listContact.id))} size="large">
-              <ClearSharpIcon sx={{ color: 'red' }} />
+            <IconButton
+              onClick={() => dispatch(deleteContact(listContact.id))}
+              size="large"
+            >
+              <ClearSharpIcon
+                sx={{ color: 'red' }}
+              />
             </IconButton>
           </TableCell>
         </TableRow>

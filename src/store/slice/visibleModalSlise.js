@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
-
 const initialState = {
     visible: false,
     id: '',
-
 }
-
-
 const visibleModalSlice = createSlice({
     name: 'visible',
     initialState,
@@ -17,7 +12,6 @@ const visibleModalSlice = createSlice({
             state.visible = action.payload.visible
             state.id = action.payload.id
         },
-
     }
 })
 

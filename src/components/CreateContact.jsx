@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -15,18 +15,35 @@ const CreateContact = (setUser) => {
   const [name, setName] = useState('')
   const [telephone, setTelephone] = useState('')
   const [btn, setBtn] = useState(true)
+  const [addGreen, setAddGreen] = useState('')
   const dispatch = useDispatch(setUser);
 
+  useEffect(() => {
+    if (telephone) {
+      setBtn(false)
+      setAddGreen(s.addGreen)
+    }
+    else {
+      setBtn(true)
+      setAddGreen('')
+    }
+  }, [telephone])
   const addContact = (e) => {
-    e.preventDefault();
-    if (!e.target.value)
-    e.target.classList.add(s.color)
-    
-    sessionStorage.setItem("listContact", JSON.stringify("object"))
+    e.preventDefault()
     dispatch(setContact({ name, telephone }))
     setName('')
     setTelephone('')
   }
+  const handleState = (e) => {
+    setTelephone(e.target.value)
+    if (e.target.value)
+      e.target.classList.remove(s.color)
+  }
+  const checkStateBlure = (e) => {
+    if (!e.target.value)
+      e.target.classList.add(s.color)
+  }
+
   return (
     <TableRow>
       <TableCell>
@@ -36,20 +53,22 @@ const CreateContact = (setUser) => {
         <TextField
           value={name}
           onChange={e => setName(e.target.value)}
-          id="input-with-sx" label="Name contact" variant="standard" />
+          label="Name contact" variant="standard" />
       </TableCell>
       <TableCell align="right">
         <TtyIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
         <TextField
           value={telephone}
-          onChange={e => setTelephone(e.target.value)}
-          id="input-with-sx" label="Telephone" variant="standard" />
+          onBlur={checkStateBlure}
+          onChange={handleState}
+          label="Telephone" variant="standard" />
       </TableCell>
       <TableCell>
         <form onSubmit={addContact}>
           <IconButton disabled={btn} type='submite' size="large">
-            <AddIcon sx={{ color: 'green' }} />
-          </IconButton></form>
+            <AddIcon className={addGreen} />
+          </IconButton>
+        </form>
       </TableCell>
       <TableCell>
       </TableCell>

@@ -8,10 +8,12 @@ import SearchContact from './SearchContact';
 
 
 const Tables = () => {
-
   return (
     <TableContainer>
-      <Table sx={{ maxWidth: 850, minWidth: 850, marginRight: 'auto', marginLeft: 'auto' }} aria-label="simple table">
+      <Table
+        sx={{ maxWidth: 850, minWidth: 850, marginRight: 'auto', marginLeft: 'auto' }}
+        aria-label="simple table"
+      >
         <TableHead>
           <CreateContact />
           <SearchContact />

@@ -11,7 +11,9 @@ const Login = (props) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [btn, setBtn] = useState(true)
-    let navigate = useNavigate()
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (login && password)
@@ -19,25 +21,20 @@ const Login = (props) => {
         if (!login || !password)
             setBtn(true)
     }, [login, password])
-
     const handleState = (e) => {
         if (e.target.id == 'login')
             setLogin(e.target.value)
         if (e.target.id == 'password')
             setPassword(e.target.value)
-        if (!e.target.value)
-            e.target.classList.add(s.color)
-        if (e.target.value && e.target.classList.contains(s.color) == true)
+        if (e.target.value)
             e.target.classList.remove(s.color)
     }
     const checkState = (e) => {
         if (!e.target.value)
             e.target.classList.add(s.color)
-
     }
-    const dispatch = useDispatch()
     async function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
         const rest = await Get.getAll(login, password)
         if (rest == 200) {
             sessionStorage.setItem('sing', true)
@@ -46,7 +43,6 @@ const Login = (props) => {
             }))
             navigate('/')
         }
-
     }
     return (
         <div className={s.container} >
@@ -60,23 +56,30 @@ const Login = (props) => {
                         color="secondary"
                         label="Login"
                         variant="standard"
-                    /></div>
-                <div> <TextField
-                    id='password'
-                    value={password}
-                    onBlur={checkState}
-                    onChange={handleState}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        id='password'
+                        value={password}
+                        onBlur={checkState}
+                        onChange={handleState}
+                        color="secondary"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        variant="standard"
+                    />
+                </div>
+                <Button
+                    disabled={btn}
+                    type='submit'
+                    variant="outlined"
                     color="secondary"
-                    label="Password"
-                    type="password"
-                    autoComplete="current-password"
-                    variant="standard"
-                /></div>
-                <Button disabled={btn} type='submit' variant="outlined" color="secondary"
-                    style={{
-                        top: 5
-                    }}
-                >Sign in</Button>
+                    style={{ top: 5 }}
+                >
+                    Sign in
+                </Button>
             </form>
         </div>);
 

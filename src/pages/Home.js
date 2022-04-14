@@ -12,32 +12,38 @@ import { IconButton } from '@mui/material';
 
 
 const Home = () => {
-    let { isAuth, sing } = useAuth()
-
+    const { isAuth, sing } = useAuth()
     const dispatch = useDispatch()
     return isAuth ?
+
         <div>
-
             <Modall></Modall>
-            <AppBar position="static">
-                <Container  align="right" maxWidth="xl">
-                   
-                        <IconButton onClick={() => {
-                            dispatch(removeUser())
-                        }} size="large">
-              <LogoutIcon sx={{ color: 'red' }} />
-            </IconButton>
-                </Container></AppBar>
-
+            <AppBar
+                position="static"
+            >
+                <Container
+                    align="right"
+                    maxWidth="xl"
+                >
+                    <IconButton
+                        onClick={() => { dispatch(removeUser()) }}
+                        size="large"
+                    >
+                        <LogoutIcon
+                            sx={{ color: 'red' }}
+                        />
+                    </IconButton>
+                </Container>
+            </AppBar>
             <Tables />
         </div>
         :
-        (
-            <Routes>
-
-                <Route path='*' element={<Login to='login' replace />} />
-            </Routes>
-        )
+        <Routes>
+            <Route
+                path='*'
+                element={<Login to='login' replace />}
+            />
+        </Routes>
 }
 
 export default Home

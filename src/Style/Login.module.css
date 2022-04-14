@@ -13,3 +13,7 @@ div.container {
 input.color{
     border-bottom: 2px solid red;
 }
+
+.addGreen{
+    color: green;
+}
