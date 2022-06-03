@@ -1,4 +1,4 @@
-Live [Demo](https://21alex.github.io/)
+Live [Demo](https://21alex.github.io/21aLeX.github.io-communications/)
 
 
 После скачивания установить 
@@ -13,4 +13,3 @@ Live [Demo](https://21alex.github.io/)
 Логин и Пароль любые. Request всегда приходит со статусом "200".
 Список контактов, а так же статус авторизации храниться в sessionStorage.
 Был использован UI фреймворк "Material UI".
-
